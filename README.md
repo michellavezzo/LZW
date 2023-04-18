@@ -1,2 +1,3 @@
 # LZW
-LZW
+
+compressor and decompressor algorithm
