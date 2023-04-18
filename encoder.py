@@ -1,4 +1,5 @@
 import sys
+import array
 
 from sys import argv
 from struct import *
@@ -33,5 +34,14 @@ if string in dictionary:
 
 # TODO: write the bin file
 print(compressed_data)
+
+## ??????
+# Cria um array de inteiros
+my_array = array.array('i', compressed_data)
+
+# Abre o arquivo em modo de escrita binária
+with open('arquivo.bin', 'wb') as f:
+    # Escreve o array no arquivo
+    my_array.tofile(f)
 
 file.close()
