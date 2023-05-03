@@ -1,17 +1,25 @@
 import sys
 import array
+import os
+import struct
 
 from sys import argv
 from struct import *
 
-input_file = argv[1]
+# set the file path
+file_path = argv[1]
 
-file = open(input_file)
+
+## TODO: use this extension to be part of the encoded data
+# get the file extension
+file_extension = os.path.splitext(file_path)[1]
+
+file = open(file_path)
 data = file.read()
 
 k = input('Digite o valor de K: ')
 
-maximum_table_size = pow(2,int(k))
+maximum_table_size = pow(2, int(k))
 
 dictionary_size = 256
 dictionary = {chr(i): i for i in range(dictionary_size)}
@@ -32,16 +40,10 @@ for symbol in data:
 if string in dictionary:
     compressed_data.append(dictionary[string])
 
-# TODO: write the bin file
-print(compressed_data)
-
-## ??????
-# Cria um array de inteiros
-my_array = array.array('i', compressed_data)
-
-# Abre o arquivo em modo de escrita binária
-with open('arquivo.bin', 'wb') as f:
-    # Escreve o array no arquivo
-    my_array.tofile(f)
+with open('binary_data.bin', 'wb') as file:
+    # pack the integer array into binary format using the struct module
+    binary_data = struct.pack('>' + 'i'*len(compressed_data), *compressed_data)
+    # write the binary data to the file
+    file.write(binary_data)
 
 file.close()
