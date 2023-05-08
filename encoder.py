@@ -14,7 +14,7 @@ file_path = argv[1]
 # get the file extension
 file_extension = os.path.splitext(file_path)[1]
 
-file = open(file_path)
+file = open(file_path, 'rb')
 data = file.read()
 
 k = input('Digite o valor de K: ')
@@ -27,7 +27,7 @@ string = ""
 compressed_data = []
 
 for symbol in data:
-    string_plus_symbol = string + symbol
+    string_plus_symbol = string + chr(symbol)
     if string_plus_symbol in dictionary:
         string = string_plus_symbol
     else:
@@ -35,7 +35,7 @@ for symbol in data:
         if(len(dictionary) <= maximum_table_size):
             dictionary[string_plus_symbol] = dictionary_size
             dictionary_size += 1
-        string = symbol
+        string = chr(symbol)
 
 if string in dictionary:
     compressed_data.append(dictionary[string])
