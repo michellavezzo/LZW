@@ -36,14 +36,15 @@ for i, code in enumerate(int_array):
             next_code += 1
         string = new_string
 
-file_type = 'txt' ## duplicated to be easy to debug
+file_type = 'mp4' ## duplicated to be easy to debug
 ## choose the write type based on the file type
 if (file_type == 'txt'):
     writeType = 'w' 
 else:
     writeType = 'wb'
 # create a file to write the decompressed data
-with open('decompressed_data.mp4', writeType) as file:  
+# 
+with open('decompressed_data.' + file_type, writeType) as file:  
     # write the decompressed data to the file
     if (file_type == 'txt'):
         file.write(decoded.encode('latin-1').decode('utf-8'))
