@@ -30,10 +30,10 @@ file_type = binary_file_type.decode('utf-8')
 
 for i, code in enumerate(int_array):
     if i == 0:
-        string = dictionary[code] 
+        string = dictionary[code]
         decoded = decoded+string
     else:
-        if (code not in dictionary): 
+        if (code not in dictionary):
             new_string = string + (string[0])
         else:
             new_string = dictionary[code]
